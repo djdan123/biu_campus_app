@@ -29,7 +29,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               '⚙️ Paramètres',
               style: TextStyle(
                 fontSize: 28,
@@ -49,10 +49,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    const Row(
                       children: [
                         Icon(Icons.palette, color: AppColors.primary),
-                        const SizedBox(width: 12),
+                        SizedBox(width: 12),
                         Text(
                           'Apparence',
                           style: TextStyle(
@@ -65,12 +65,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                     const Divider(height: 30),
                     ListTile(
-                      leading: Icon(Icons.dark_mode, color: AppColors.primary),
+                      leading: const Icon(Icons.dark_mode, color: AppColors.primary),
                       title: const Text('Mode sombre'),
                       trailing: Switch(
                         value: Theme.of(context).brightness == Brightness.dark,
                         onChanged: (_) => widget.toggleDarkMode(),
-                        activeColor: AppColors.primary,
+                        activeThumbColor: AppColors.primary,
                       ),
                     ),
                   ],
@@ -90,10 +90,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    const Row(
                       children: [
                         Icon(Icons.settings, color: AppColors.primary),
-                        const SizedBox(width: 12),
+                        SizedBox(width: 12),
                         Text(
                           'Préférences',
                           style: TextStyle(
@@ -110,7 +110,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       subtitle: const Text('Recevoir des notifications push'),
                       value: _notifications,
                       onChanged: (val) => setState(() => _notifications = val),
-                      activeColor: AppColors.primary,
+                      activeThumbColor: AppColors.primary,
                     ),
                     SwitchListTile(
                       title: const Text('Auto-sauvegarde'),
@@ -118,7 +118,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           'Sauvegarder les modifications automatiquement'),
                       value: _autoSave,
                       onChanged: (val) => setState(() => _autoSave = val),
-                      activeColor: AppColors.primary,
+                      activeThumbColor: AppColors.primary,
                     ),
                   ],
                 ),
@@ -137,10 +137,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    const Row(
                       children: [
                         Icon(Icons.info, color: AppColors.primary),
-                        const SizedBox(width: 12),
+                        SizedBox(width: 12),
                         Text(
                           'Informations',
                           style: TextStyle(
@@ -152,13 +152,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ],
                     ),
                     const Divider(height: 30),
-                    ListTile(
+                    const ListTile(
                       leading: Icon(Icons.school, color: AppColors.primary),
-                      title: const Text('BUI Smart Campus'),
-                      subtitle: const Text('Version 1.0.0'),
+                      title: Text('BUI Smart Campus'),
+                      subtitle: Text('Version 1.0.0'),
                     ),
                     ListTile(
-                      leading: Icon(Icons.data_usage, color: AppColors.primary),
+                      leading: const Icon(Icons.data_usage, color: AppColors.primary),
                       title: const Text('Données en mémoire'),
                       subtitle: Text(
                         '${data.studentCount} étudiants • ${data.teacherCount} enseignants • ${data.courseCount} cours',

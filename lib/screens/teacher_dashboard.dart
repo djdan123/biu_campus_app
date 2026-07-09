@@ -1,6 +1,8 @@
+// lib/screens/teacher_dashboard.dart
 import 'package:flutter/material.dart';
 import '../services/data_service.dart';
 import '../widgets/custom_drawer.dart';
+import '../constants/colors.dart';
 import 'teacher/teacher_home.dart';
 import 'teacher/schedule_view.dart';
 import 'teacher/attendance_management.dart';
@@ -28,7 +30,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
     final teacher = data.getTeacher(widget.teacherId);
     final name = teacher?.fullName ?? 'Enseignant';
     _titles = [
-      'Accueil - $name',
+      'Accueil',
       'Emploi du temps',
       'Gestion des présences',
       'Gestion des notes',
@@ -48,7 +50,8 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_titles[_selectedIndex]),
-        backgroundColor: Colors.orange.shade700,
+        backgroundColor: AppColors.primary,
+        foregroundColor: Colors.white,
         elevation: 0,
       ),
       drawer: CustomDrawer(

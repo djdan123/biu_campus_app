@@ -21,8 +21,9 @@ class Grade {
     if (assignmentScore != null && examScore != null) {
       finalScore = (assignmentScore! * 0.4) + (examScore! * 0.6);
       // Attribution lettre
-      if (finalScore! >= 90) letterGrade = 'A';
-      else if (finalScore! >= 80) letterGrade = 'B';
+      if (finalScore! >= 90) {
+        letterGrade = 'A';
+      } else if (finalScore! >= 80) letterGrade = 'B';
       else if (finalScore! >= 70) letterGrade = 'C';
       else if (finalScore! >= 60) letterGrade = 'D';
       else letterGrade = 'F';

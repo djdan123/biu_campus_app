@@ -36,7 +36,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
       );
     }
 
-    final List<Widget> _widgetOptions = [
+    final List<Widget> widgetOptions = [
       StudentProfile(studentId: widget.studentId),
       StudentSchedule(studentId: widget.studentId),
       StudentPayments(studentId: widget.studentId),
@@ -45,7 +45,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
       ExamEligibility(studentId: widget.studentId),
     ];
 
-    final List<String> _titles = [
+    final List<String> titles = [
       'Profil',
       'Emploi du temps',
       'Paiements',
@@ -56,7 +56,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('${student.fullName} - ${_titles[_selectedIndex]}'),
+        title: Text('${student.fullName} - ${titles[_selectedIndex]}'),
         backgroundColor: Colors.blue.shade800,
         elevation: 0,
       ),
@@ -64,7 +64,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
         role: 'student',
         onItemSelected: (index) => setState(() => _selectedIndex = index),
       ),
-      body: _widgetOptions[_selectedIndex],
+      body: widgetOptions[_selectedIndex],
     );
   }
 }

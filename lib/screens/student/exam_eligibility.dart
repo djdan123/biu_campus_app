@@ -1,7 +1,6 @@
 // lib/screens/student/exam_eligibility.dart
 import 'package:flutter/material.dart';
 import '../../services/data_service.dart';
-import '../../constants/colors.dart';
 
 class ExamEligibility extends StatelessWidget {
   final String studentId;

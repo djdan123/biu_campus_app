@@ -69,7 +69,7 @@ class ScheduleView extends StatelessWidget {
               children: [
                 Text(
                   day,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: AppColors.accent,
@@ -79,13 +79,13 @@ class ScheduleView extends StatelessWidget {
                 ...daySchedules.map((s) {
                   final course = data.getCourse(s.courseId);
                   return ListTile(
-                    leading: Icon(Icons.book, color: AppColors.primary),
+                    leading: const Icon(Icons.book, color: AppColors.primary),
                     title: Text(course?.name ?? 'Cours inconnu'),
                     subtitle: Text(
                         '${s.startTimeFormatted} - ${s.endTimeFormatted} • Salle ${s.room}'),
-                    trailing: Text('${course?.code ?? ''}'),
+                    trailing: Text(course?.code ?? ''),
                   );
-                }).toList(),
+                }),
               ],
             ),
           ),

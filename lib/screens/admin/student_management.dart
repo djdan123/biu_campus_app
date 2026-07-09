@@ -5,6 +5,8 @@ import '../../services/data_service.dart';
 import '../../constants/colors.dart';
 
 class StudentManagement extends StatefulWidget {
+  const StudentManagement({super.key});
+
   @override
   _StudentManagementState createState() => _StudentManagementState();
 }
@@ -70,7 +72,7 @@ class _StudentManagementState extends State<StudentManagement> {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Rechercher...',
-                      prefixIcon: Icon(Icons.search, color: AppColors.primary),
+                      prefixIcon: const Icon(Icons.search, color: AppColors.primary),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide.none,
@@ -163,7 +165,7 @@ class _StudentManagementState extends State<StudentManagement> {
                             backgroundColor: AppColors.secondary,
                             child: Text(
                               student.fullName[0].toUpperCase(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: AppColors.primary,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -188,7 +190,7 @@ class _StudentManagementState extends State<StudentManagement> {
                             children: [
                               IconButton(
                                 icon:
-                                    Icon(Icons.edit, color: AppColors.primary),
+                                    const Icon(Icons.edit, color: AppColors.primary),
                                 onPressed: () =>
                                     _showStudentForm(student: student),
                               ),
@@ -256,7 +258,7 @@ class _StudentManagementState extends State<StudentManagement> {
 class StudentForm extends StatefulWidget {
   final Student? student;
   final VoidCallback onSave;
-  StudentForm({this.student, required this.onSave});
+  const StudentForm({super.key, this.student, required this.onSave});
 
   @override
   _StudentFormState createState() => _StudentFormState();

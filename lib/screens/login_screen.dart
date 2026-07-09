@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              AppColors.primary.withOpacity(0.95),
+              AppColors.primary.withValues(alpha: 0.95),
               const Color(0xFF1E3A8A), // Bleu profond complémentaire
             ],
           ),
@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: AppColors.primary.withOpacity(0.1),
+                        color: AppColors.primary.withValues(alpha: 0.1),
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(
@@ -103,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                           // Sélection du rôle
                           DropdownButtonFormField<String>(
-                            value: _selectedRole,
+                            initialValue: _selectedRole,
                             decoration: InputDecoration(
                               labelText: 'Rôle',
                               prefixIcon: const Icon(Icons.person_rounded, color: AppColors.primary),
@@ -158,8 +158,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.grey.shade100,
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      child: Column(
-                        children: const [
+                      child: const Column(
+                        children: [
                           Text(
                             '🔑 Identifiants de test',
                             style: TextStyle(fontWeight: FontWeight.bold),
@@ -215,8 +215,9 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_formKey.currentState!.validate()) {
       bool valid = false;
 
-      if (_selectedRole == 'admin' && _email == 'admin' && _password == 'admin') valid = true;
-      else if (_selectedRole == 'teacher' && _email == 'teacher' && _password == 'teacher') valid = true;
+      if (_selectedRole == 'admin' && _email == 'admin' && _password == 'admin') {
+        valid = true;
+      } else if (_selectedRole == 'teacher' && _email == 'teacher' && _password == 'teacher') valid = true;
       else if (_selectedRole == 'student' && _email == 'student' && _password == 'student') valid = true;
 
       if (valid) {

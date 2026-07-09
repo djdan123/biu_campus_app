@@ -34,13 +34,13 @@ class StudentProfile extends StatelessWidget {
                     backgroundColor: AppColors.secondary,
                     child: Text(
                       student.fullName[0].toUpperCase(),
-                      style: TextStyle(fontSize: 40, color: AppColors.primary),
+                      style: const TextStyle(fontSize: 40, color: AppColors.primary),
                     ),
                   ),
                   const SizedBox(height: 16),
                   Text(
                     student.fullName,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: AppColors.accent,

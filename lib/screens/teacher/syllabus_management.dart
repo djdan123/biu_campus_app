@@ -34,11 +34,11 @@ class _SyllabusManagementState extends State<SyllabusManagement> {
                 child: DropdownButtonFormField<String>(
                   decoration: InputDecoration(
                     labelText: 'Choisir un cours',
-                    prefixIcon: Icon(Icons.book, color: AppColors.primary),
+                    prefixIcon: const Icon(Icons.book, color: AppColors.primary),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15)),
                   ),
-                  value: selectedCourseId,
+                  initialValue: selectedCourseId,
                   items: courses
                       .map((c) => DropdownMenuItem(
                             value: c.id,
@@ -151,11 +151,11 @@ class _SyllabusItemFormState extends State<SyllabusItemForm> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Row(
+      title: const Row(
         children: [
           Icon(Icons.list_alt, color: AppColors.primary),
-          const SizedBox(width: 10),
-          const Text('Ajouter un élément de syllabus'),
+          SizedBox(width: 10),
+          Text('Ajouter un élément de syllabus'),
         ],
       ),
       content: Form(

@@ -64,7 +64,7 @@ class _TeacherManagementState extends State<TeacherManagement> {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Rechercher...',
-                      prefixIcon: Icon(Icons.search, color: AppColors.primary),
+                      prefixIcon: const Icon(Icons.search, color: AppColors.primary),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide.none,
@@ -134,7 +134,7 @@ class _TeacherManagementState extends State<TeacherManagement> {
                             backgroundColor: AppColors.secondary,
                             child: Text(
                               teacher.fullName[0].toUpperCase(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: AppColors.primary,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -146,7 +146,7 @@ class _TeacherManagementState extends State<TeacherManagement> {
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('${teacher.email}'),
+                              Text(teacher.email),
                               Text(
                                 'Département: ${teacher.department}',
                                 style: TextStyle(
@@ -159,7 +159,7 @@ class _TeacherManagementState extends State<TeacherManagement> {
                             children: [
                               IconButton(
                                 icon:
-                                    Icon(Icons.edit, color: AppColors.primary),
+                                    const Icon(Icons.edit, color: AppColors.primary),
                                 onPressed: () =>
                                     _showTeacherForm(teacher: teacher),
                               ),

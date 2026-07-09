@@ -26,7 +26,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               '📈 Statistiques détaillées',
               style: TextStyle(
                 fontSize: 28,
@@ -80,7 +80,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [AppColors.secondary, Colors.white],
@@ -93,7 +93,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: accentColor.withOpacity(0.15),
+                color: accentColor.withValues(alpha: 0.15),
                 shape: BoxShape.circle,
               ),
               child: Icon(icon, size: 32, color: accentColor),
@@ -101,7 +101,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             const SizedBox(height: 12),
             Text(
               '$value',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
                 color: AppColors.accent,
@@ -135,7 +135,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               '🏫 Répartition par département',
               style: TextStyle(
                 fontSize: 20,
@@ -195,7 +195,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               '🎓 Répartition par promotion',
               style: TextStyle(
                 fontSize: 20,
@@ -213,13 +213,13 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                   decoration: BoxDecoration(
                     color: AppColors.secondary,
                     borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: AppColors.primary.withOpacity(0.3)),
+                    border: Border.all(color: AppColors.primary.withValues(alpha: 0.3)),
                   ),
                   child: Column(
                     children: [
                       Text(
                         entry.key,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                           color: AppColors.accent,
@@ -253,7 +253,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               '💰 Statut des paiements',
               style: TextStyle(
                 fontSize: 20,
@@ -281,9 +281,9 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.08),
+        color: color.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: color.withOpacity(0.2)),
+        border: Border.all(color: color.withValues(alpha: 0.2)),
       ),
       child: Column(
         children: [

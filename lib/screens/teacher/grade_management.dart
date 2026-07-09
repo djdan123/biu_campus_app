@@ -21,8 +21,12 @@ class _GradeManagementState extends State<GradeManagement> {
 
   @override
   void dispose() {
-    for (var c in assignmentControllers.values) c.dispose();
-    for (var c in examControllers.values) c.dispose();
+    for (var c in assignmentControllers.values) {
+      c.dispose();
+    }
+    for (var c in examControllers.values) {
+      c.dispose();
+    }
     super.dispose();
   }
 
@@ -41,11 +45,11 @@ class _GradeManagementState extends State<GradeManagement> {
           DropdownButtonFormField<String>(
             decoration: InputDecoration(
               labelText: 'Choisir un cours',
-              prefixIcon: Icon(Icons.book, color: AppColors.primary),
+              prefixIcon: const Icon(Icons.book, color: AppColors.primary),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
             ),
-            value: selectedCourseId,
+            initialValue: selectedCourseId,
             items: courses
                 .map((c) => DropdownMenuItem(
                       value: c.id,
@@ -59,7 +63,7 @@ class _GradeManagementState extends State<GradeManagement> {
                 assignmentControllers.clear();
                 examControllers.clear();
                 for (var s in students) {
-                  final grade = data.getGrade(s.id, val!);
+                  final grade = data.getGrade(s.id, val);
                   assignmentControllers[s.id] = TextEditingController(
                     text: grade?.assignmentScore?.toString() ?? '',
                   );
@@ -116,7 +120,7 @@ class _GradeManagementState extends State<GradeManagement> {
                                       backgroundColor: AppColors.secondary,
                                       child: Text(
                                         student.fullName[0].toUpperCase(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             color: AppColors.primary,
                                             fontWeight: FontWeight.bold),
                                       ),

@@ -63,7 +63,7 @@ class StudentPayments extends StatelessWidget {
                 ),
                 Chip(
                   label: Text(p.status.toUpperCase()),
-                  backgroundColor: statusColor.withOpacity(0.2),
+                  backgroundColor: statusColor.withValues(alpha: 0.2),
                   labelStyle: TextStyle(color: statusColor, fontSize: 10),
                   padding: const EdgeInsets.symmetric(horizontal: 4),
                 ),

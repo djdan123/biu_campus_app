@@ -116,6 +116,6 @@ class Schedule {
   @override
   String toString() {
     return 'Schedule(id: $id, courseId: $courseId, dayOfWeek: $dayOfWeek, '
-           'startTime: ${startTimeFormatted}, endTime: ${endTimeFormatted}, room: $room)';
+           'startTime: $startTimeFormatted, endTime: $endTimeFormatted, room: $room)';
   }
 }

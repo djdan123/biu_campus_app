@@ -40,7 +40,7 @@ class StudentGrades extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColors.secondary,
               borderRadius: BorderRadius.circular(15),
-              border: Border.all(color: AppColors.primary.withOpacity(0.3)),
+              border: Border.all(color: AppColors.primary.withValues(alpha: 0.3)),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,7 +51,7 @@ class StudentGrades extends StatelessWidget {
                 ),
                 Text(
                   average.toStringAsFixed(1),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                     color: AppColors.primary,

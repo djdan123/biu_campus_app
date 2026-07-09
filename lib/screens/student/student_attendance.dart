@@ -79,7 +79,7 @@ class StudentAttendance extends StatelessWidget {
                   subtitle: Text(a.date.toString().substring(0, 10)),
                   trailing: Chip(
                     label: Text(a.status.toUpperCase()),
-                    backgroundColor: statusColor.withOpacity(0.2),
+                    backgroundColor: statusColor.withValues(alpha: 0.2),
                     labelStyle: TextStyle(color: statusColor),
                   ),
                 ),

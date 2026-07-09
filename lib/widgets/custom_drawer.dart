@@ -54,13 +54,13 @@ class CustomDrawer extends StatelessWidget {
           Container(
             width: double.infinity,
             padding: const EdgeInsets.fromLTRB(20, 50, 20, 30),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
                   AppColors.primary,        // #E8A23D
-                  const Color(0xFF1E3A8A),
+                  Color(0xFF1E3A8A),
                 ],
               ),
             ),
@@ -69,11 +69,11 @@ class CustomDrawer extends StatelessWidget {
               children: [
                 Container(
                   padding: const EdgeInsets.all(14),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     shape: BoxShape.circle,
                   ),
-                  child: Icon(
+                  child: const Icon(
                     Icons.school_rounded,
                     size: 42,
                     color: AppColors.primary,
@@ -89,7 +89,7 @@ class CustomDrawer extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Rôle : ${role.toUpperCase()}',
+                  '${role.toUpperCase()}',
                   style: const TextStyle(
                     color: Colors.white70,
                     fontSize: 14,

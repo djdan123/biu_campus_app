@@ -33,11 +33,11 @@ class _AttendanceManagementState extends State<AttendanceManagement> {
           DropdownButtonFormField<String>(
             decoration: InputDecoration(
               labelText: 'Choisir un cours',
-              prefixIcon: Icon(Icons.book, color: AppColors.primary),
+              prefixIcon: const Icon(Icons.book, color: AppColors.primary),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
             ),
-            value: selectedCourseId,
+            initialValue: selectedCourseId,
             items: courses
                 .map((c) => DropdownMenuItem(
                       value: c.id,
@@ -106,7 +106,7 @@ class _AttendanceManagementState extends State<AttendanceManagement> {
                               backgroundColor: AppColors.secondary,
                               child: Text(
                                 student.fullName[0].toUpperCase(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: AppColors.primary,
                                     fontWeight: FontWeight.bold),
                               ),

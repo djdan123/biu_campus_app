@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart'; // Ajout pour TimeOfDay
 import '../models/student.dart';
 import '../models/teacher.dart';
@@ -556,5 +555,145 @@ class DataService {
     final course = getCourse(courseId);
     if (course == null) return [];
     return students.where((s) => course.studentIds.contains(s.id)).toList();
+  }
+
+  // Récupère les 5 dernières activités sous forme de liste de Map
+  List<Map<String, String>> getRecentActivities() {
+    List<Map<String, String>> activities = [];
+
+    // Exemple : on prend les 3 derniers étudiants inscrits
+    for (var student in students.reversed.take(2)) {
+      activities.add({
+        'name': student.fullName,
+        'action': 'Nouvelle inscription',
+        'date': _formatDate(student.enrollmentDate),
+      });
+    }
+
+    // Les 2 derniers paiements
+    for (var payment in payments.reversed.take(2)) {
+      final student = getStudent(payment.studentId);
+      activities.add({
+        'name': student?.fullName ?? 'Inconnu',
+        'action': 'Paiement effectué',
+        'date': _formatDate(payment.date),
+      });
+    }
+
+    // Les 2 dernières présences marquées
+    for (var attendance in attendances.reversed.take(2)) {
+      final student = getStudent(attendance.studentId);
+      activities.add({
+        'name': student?.fullName ?? 'Inconnu',
+        'action': 'Présence enregistrée',
+        'date': _formatDate(attendance.date),
+      });
+    }
+
+    // Trier par date décroissante (les plus récentes d'abord)
+    activities.sort((a, b) => b['date']!.compareTo(a['date']!));
+
+    // Garder les 5 premières
+    return activities.take(5).toList();
+  }
+
+  String _formatDate(DateTime date) {
+    final now = DateTime.now();
+    final diff = now.difference(date);
+    if (diff.inDays == 0) return "Aujourd'hui";
+    if (diff.inDays == 1) return "Hier";
+    return "${diff.inDays} jours";
+  }
+    // ================= COURS D'AUJOURD'HUI =================
+  List<Schedule> getTodaySchedules(String teacherId) {
+    final now = DateTime.now();
+    // On détermine le jour de la semaine en français
+    final days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+    // La méthode DateTime.weekday donne 1 pour lundi, 7 pour dimanche
+    // On convertit : 1->Lundi, 2->Mardi, ...
+    final todayName = days[now.weekday - 1];
+    return schedules.where((s) => s.teacherId == teacherId && s.dayOfWeek == todayName).toList();
+  }
+
+  // ================= ACTIVITÉS RÉCENTES POUR UN ENSEIGNANT =================
+  List<Map<String, String>> getRecentActivitiesForTeacher(String teacherId) {
+    final List<Map<String, String>> activities = [];
+
+    // Récupérer les cours de l'enseignant pour filtrer les activités associées
+    final teacherCourses = getCoursesForTeacher(teacherId);
+    final courseIds = teacherCourses.map((c) => c.id).toSet();
+
+    // 1. Dernières présences (attendances)
+    final recentAttendances = attendances
+        .where((a) => courseIds.contains(a.courseId))
+        .toList()
+      ..sort((a, b) => b.date.compareTo(a.date));
+    for (var att in recentAttendances.take(3)) {
+      final student = getStudent(att.studentId);
+      final course = getCourse(att.courseId);
+      activities.add({
+        'title': 'Présence enregistrée',
+        'description': '${student?.fullName ?? 'Étudiant'} - ${course?.name ?? 'Cours'}',
+        'time': _formatTime(att.date),
+        'type': 'attendance',
+      });
+    }
+
+    // 2. Dernières notes (grades) mises à jour
+    final recentGrades = grades
+        .where((g) => courseIds.contains(g.courseId))
+        .toList()
+      ..sort((a, b) {
+        // On utilise la date de mise à jour, non stockée. On prend la date de maintenant pour l'exemple.
+        // Dans un vrai projet, il faudrait un champ updateDate. On simule avec l'ID.
+        return b.id.compareTo(a.id);
+      });
+    for (var g in recentGrades.take(3)) {
+      final student = getStudent(g.studentId);
+      final course = getCourse(g.courseId);
+      activities.add({
+        'title': 'Note ajoutée',
+        'description': '${student?.fullName ?? 'Étudiant'} - ${course?.name ?? 'Cours'}',
+        'time': 'Récemment', // On pourrait avoir une date
+        'type': 'grade',
+      });
+    }
+
+    // 3. Derniers syllabus modifiés
+    final recentSyllabus = syllabusItems
+        .where((s) => courseIds.contains(s.courseId))
+        .toList()
+      ..sort((a, b) => b.id.compareTo(a.id));
+    for (var s in recentSyllabus.take(3)) {
+      final course = getCourse(s.courseId);
+      activities.add({
+        'title': 'Syllabus modifié',
+        'description': '${course?.name ?? 'Cours'} - Semaine ${s.weekNumber}',
+        'time': 'Récemment',
+        'type': 'syllabus',
+      });
+    }
+
+    // Trier par date/heure (on utilise un ordre arbitraire pour l'exemple)
+    // Comme nous n'avons pas de timestamp, on garde l'ordre de création.
+    // On limite à 5 activités.
+    return activities.take(5).toList();
+  }
+
+  String _formatTime(DateTime date) {
+    final now = DateTime.now();
+    final diff = now.difference(date);
+    if (diff.inDays == 0) {
+      if (diff.inHours < 1) {
+        return 'Il y a ${diff.inMinutes} min';
+      }
+      return 'Il y a ${diff.inHours} h';
+    } else if (diff.inDays == 1) {
+      return 'Hier';
+    } else if (diff.inDays < 7) {
+      return 'Il y a ${diff.inDays} jours';
+    } else {
+      return '${date.day}/${date.month}/${date.year}';
+    }
   }
 }

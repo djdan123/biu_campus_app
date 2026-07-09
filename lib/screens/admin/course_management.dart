@@ -64,7 +64,7 @@ class _CourseManagementState extends State<CourseManagement> {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Rechercher...',
-                      prefixIcon: Icon(Icons.search, color: AppColors.primary),
+                      prefixIcon: const Icon(Icons.search, color: AppColors.primary),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide.none,
@@ -140,7 +140,7 @@ class _CourseManagementState extends State<CourseManagement> {
                             child: Center(
                               child: Text(
                                 course.code,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: AppColors.primary,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 12,
@@ -174,7 +174,7 @@ class _CourseManagementState extends State<CourseManagement> {
                             children: [
                               IconButton(
                                 icon:
-                                    Icon(Icons.edit, color: AppColors.primary),
+                                    const Icon(Icons.edit, color: AppColors.primary),
                                 onPressed: () =>
                                     _showCourseForm(course: course),
                               ),
@@ -309,10 +309,10 @@ class _CourseFormState extends State<CourseForm> {
                     keyboardType: TextInputType.number),
                 const SizedBox(height: 12),
                 DropdownButtonFormField<String>(
-                  value: _selectedTeacherId,
+                  initialValue: _selectedTeacherId,
                   decoration: InputDecoration(
                     labelText: 'Enseignant responsable',
-                    prefixIcon: Icon(Icons.person, color: AppColors.primary),
+                    prefixIcon: const Icon(Icons.person, color: AppColors.primary),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12)),
                   ),

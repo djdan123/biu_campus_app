@@ -63,7 +63,7 @@ class _PaymentManagementState extends State<PaymentManagement> {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Rechercher par étudiant...',
-                      prefixIcon: Icon(Icons.search, color: AppColors.primary),
+                      prefixIcon: const Icon(Icons.search, color: AppColors.primary),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide.none,
@@ -140,7 +140,7 @@ class _PaymentManagementState extends State<PaymentManagement> {
                             width: 50,
                             height: 50,
                             decoration: BoxDecoration(
-                              color: statusColor.withOpacity(0.2),
+                              color: statusColor.withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Center(
@@ -177,7 +177,7 @@ class _PaymentManagementState extends State<PaymentManagement> {
                             children: [
                               IconButton(
                                 icon:
-                                    Icon(Icons.edit, color: AppColors.primary),
+                                    const Icon(Icons.edit, color: AppColors.primary),
                                 onPressed: () =>
                                     _showPaymentForm(payment: payment),
                               ),
@@ -292,10 +292,10 @@ class _PaymentFormState extends State<PaymentForm> {
             mainAxisSize: MainAxisSize.min,
             children: [
               DropdownButtonFormField<String>(
-                value: _selectedStudentId,
+                initialValue: _selectedStudentId,
                 decoration: InputDecoration(
                   labelText: 'Étudiant',
-                  prefixIcon: Icon(Icons.person, color: AppColors.primary),
+                  prefixIcon: const Icon(Icons.person, color: AppColors.primary),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12)),
                 ),
@@ -313,7 +313,7 @@ class _PaymentFormState extends State<PaymentForm> {
                 controller: _amountController,
                 decoration: InputDecoration(
                   labelText: 'Montant (FBu)',
-                  prefixIcon: Icon(Icons.money, color: AppColors.primary),
+                  prefixIcon: const Icon(Icons.money, color: AppColors.primary),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12)),
                 ),
@@ -322,10 +322,10 @@ class _PaymentFormState extends State<PaymentForm> {
               ),
               const SizedBox(height: 12),
               DropdownButtonFormField<String>(
-                value: _selectedStatus,
+                initialValue: _selectedStatus,
                 decoration: InputDecoration(
                   labelText: 'Statut',
-                  prefixIcon: Icon(Icons.info, color: AppColors.primary),
+                  prefixIcon: const Icon(Icons.info, color: AppColors.primary),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12)),
                 ),
@@ -342,7 +342,7 @@ class _PaymentFormState extends State<PaymentForm> {
                 controller: _descriptionController,
                 decoration: InputDecoration(
                   labelText: 'Description',
-                  prefixIcon: Icon(Icons.description, color: AppColors.primary),
+                  prefixIcon: const Icon(Icons.description, color: AppColors.primary),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12)),
                 ),
